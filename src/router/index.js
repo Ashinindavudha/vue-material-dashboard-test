@@ -1,14 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+//import Home from '../views/Home.vue'
+import DashboardLayout from "../pages/Layout/DashboardLayout.vue";
+import Dashboard from '../pages/Dashboard.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: DashboardLayout,
+    redirect: "/dashboard",
+    children: [
+      {
+        path: "dashboard",
+        name: "Dashboard",
+        component: Dashboard
+      }
+    ]
   },
   {
     path: '/about',

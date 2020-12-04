@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <!-- {{-- Fonts and icons --}} -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&family=Material+Icons&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="md/css/material-dashboard-rtl.css">
+    <link rel="stylesheet" href="md/css/material-dashboard.css">
+    <link rel="stylesheet" href="md/css/material-dashboard.min.css">
+    <link rel="stylesheet" href="md/css/material-dashboard.css.map">
   </head>
   <body>
     <noscript>
@@ -13,5 +24,23 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    {{-- Core JS Files --}}
+    <script src="md/js/core/jquery.min.js"></script>
+    <script src="md/js/core/popper.min.js"></script>
+    <script src="md/js/core/bootstrap-material-design.min.js"></script>
+    <script src="md/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="md/js/plugins/bootstrap-notify.js"></script>
+
+    <!-- {{-- Plugin for the momentJs --}} -->
+    <script src="md/js/plugins/moment.min.js"></script>
+
+    <!-- {{-- Notifications Plugin --}} -->
+    <script src="md/js/plugins/bootstrap-notify.js"></script>
+
+    <!-- {{-- Datetime Picker --}} -->
+    <script src="md/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <script src="md/js/material-dashboard.js"></script>
+    <script src="md/js/material-dashboard.min.js"></script>
+
   </body>
 </html>
