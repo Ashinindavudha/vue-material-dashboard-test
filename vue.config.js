@@ -1,5 +1,13 @@
 module.exports = {
   "transpileDependencies": [
-    "vuetify"
-  ]
+    "vuetify",
+  ],
+  configureWebpack: {
+    resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js'
+      }
+    }
+  },
+  runtimeCompiler: true
 }

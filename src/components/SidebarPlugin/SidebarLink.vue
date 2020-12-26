@@ -1,53 +1,52 @@
 <template>
-  <li class="md-list-item">
-    <router-link
-      class="md-list-item-router md-list-item-container md-button-clean"
-      @click="hideSidebar"
-      v-bind="$attrs"
-    >
-      <div class="md-list-item-content md-ripple">
-        <slot>
-          <md-icon>{{ link.icon }}</md-icon>
-          <p>{{ link.name }}</p>
-        </slot>
-      </div>
-    </router-link>
+  <router-link
+    v-if="item.gate === undefined || (item.gate)"
+    :to="item.path"
+    v-slot="{ href, route, navigate, isActive, isExactActive }"
+  >
+  <li
+  class="nav-item"
+  :class="[isActive && 'active', isExactActive && 'active']"
+  >
+    <a :href="href" class="nav-link" @click="navigate">
+        <template v-if="text">
+          <span class="sidebar-mini">{{ textIcon }}</span>
+          <span class="sidebar-normal">{{ $t(item.title) }}</span>
+        </template>
+        <template v-else>
+          <i class="material-icons">{{ item.icon }}</i>
+          <p>{{ $t(item.title) }}</p>
+        </template>
+      </a>
   </li>
+  </router-link>
 </template>
 <script>
 export default {
-  inject: {
-    autoClose: {
-      default: true
-    }
-  },
   props: {
-    link: {
-      type: [String, Object],
-      default: () => {
-        return {
-          name: "",
-          path: "",
-          icon: ""
-        };
-      }
+    item: {
+      type: Object,
+      default: () => ({
+        title: undefined,
+        icon: undefined,
+        path: {},
+        gate: undefined
+      })
     },
-    tag: {
-      type: String,
-      default: "router-link"
+    text: {
+      type: Boolean,
+      default: false
     }
   },
-  methods: {
-    hideSidebar() {
-      if (
-        this.autoClose &&
-        this.$sidebar &&
-        this.$sidebar.showSidebar === true
-      ) {
-        this.$sidebar.displaySidebar(false);
-      }
+  computed: {
+    textIcon: function () {
+      return this.$i18n
+        .t(this.item.title)
+        .split(' ')
+        .map(s => s.charAt(0).toUpperCase())
+        .join('')
+        .substring(0, 3)
     }
   }
-};
+}
 </script>
-<style></style>

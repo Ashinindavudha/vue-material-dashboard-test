@@ -1,0 +1,156 @@
+<template>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">remove_red_eye</i>
+            </div>
+            <h4 class="card-title">
+              {{ $t('global.view') }}
+              <strong>{{
+                $t('cruds.grammarUnadikappa.title_singular')
+              }}</strong>
+            </h4>
+          </div>
+          <div class="card-body">
+            <back-button></back-button>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <div class="table">
+                    <tbody>
+                      <tr>
+                        <td class="text-primary">
+                          {{ $t('cruds.grammarUnadikappa.fields.id') }}
+                        </td>
+                        <td>
+                          {{ entry.id }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-primary">
+                          {{ $t('cruds.grammarUnadikappa.fields.chapter') }}
+                        </td>
+                        <td>
+                          <datatable-single :row="entry" field="chapter.titel">
+                          </datatable-single>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-primary">
+                          {{ $t('cruds.grammarUnadikappa.fields.title') }}
+                        </td>
+                        <td>
+                          {{ entry.title }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-primary">
+                          {{ $t('cruds.grammarUnadikappa.fields.description') }}
+                        </td>
+                        <td>
+                          <ckeditor
+                            :editor="editor"
+                            :value="entry.description"
+                            disabled
+                          >
+                          </ckeditor>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-primary">
+                          {{
+                            $t('cruds.grammarUnadikappa.fields.grammar_nissaya')
+                          }}
+                        </td>
+                        <td>
+                          <ckeditor
+                            :editor="editor"
+                            :value="entry.grammar_nissaya"
+                            disabled
+                          >
+                          </ckeditor>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-primary">
+                          {{
+                            $t(
+                              'cruds.grammarUnadikappa.fields.grammar_definition'
+                            )
+                          }}
+                        </td>
+                        <td>
+                          <ckeditor
+                            :editor="editor"
+                            :value="entry.grammar_definition"
+                            disabled
+                          >
+                          </ckeditor>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-primary">
+                          {{ $t('cruds.grammarUnadikappa.fields.ru_open') }}
+                        </td>
+                        <td>
+                          <ckeditor
+                            :editor="editor"
+                            :value="entry.ru_open"
+                            disabled
+                          >
+                          </ckeditor>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+import DatatableSingle from '../../components/Datatables/DatatableSingle'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+import BackButton from '../../components/BackButton.vue'
+export default {
+  components: {
+    DatatableSingle,
+    //ClassicEditor,
+    BackButton
+  },
+  data() {
+    return {
+      editor: ClassicEditor
+    }
+  },
+  beforeDestroy() {
+    this.resetState()
+  },
+  computed: {
+    ...mapGetters('GrammarUnadikappasSingle', ['entry'])
+  },
+  watch: {
+    '$route.params.id': {
+      immediate: true,
+      handler() {
+        this.resetState()
+        this.fetchShowData(this.$route.params.id)
+      }
+    }
+  },
+  methods: {
+    ...mapActions('GrammarUnadikappasSingle', ['fetchShowData', 'resetState'])
+  }
+}
+</script>

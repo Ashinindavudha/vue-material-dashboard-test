@@ -1,55 +1,53 @@
 <template>
   <div
     class="sidebar"
-    :data-color="sidebarItemColor"
-    :data-image="sidebarBackgroundImage"
-    :style="sidebarStyle"
+    :data-background-color="backgroundColor"
+    :data-image="backgroundImage"
+    :data-color="itemColor"
   >
     <div class="logo">
-      <a href="#" class="simple-text logo-mini">
-        <div class="logo-img">
-          <img :src="imgLogo" alt="" />
-        </div>
-      </a>
-
-      <a
-        href="https://www.creative-tim.com/product/vue-material-dashboard"
-        target="_blank"
-        class="simple-text logo-normal"
-      >
-        {{ title }}
+      <a href="/" class="simple-text logo-normal">
+       {{ $t(title) }}
       </a>
     </div>
     <div class="sidebar-wrapper">
       <slot name="content"></slot>
-      <md-list class="nav">
-        <!--By default vue-router adds an active class to each route link. This way the links are colored when clicked-->
+      <ul class="nav">
         <slot>
-          <sidebar-link
-            v-for="(link, index) in sidebarLinks"
-            :key="link.name + index"
-            :to="link.path"
-            :link="link"
-          >
-          </sidebar-link>
+          <template v-for="(item, i) in sidebarLinks">
+            <sidebar-item-group v-if="item.children && (item.gate)"
+            :key="`group-${i}`"
+            :item="item"
+            ></sidebar-item-group>
+           <sidebar-link v-else :key="`item-${i}`" :item="item"></sidebar-link>
+          </template>
         </slot>
-      </md-list>
+      </ul>
+      <ul class="nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link" @click.prevent="logout">
+            <i class="material-icons">power_settings_new</i>
+           <p>{{ $t('global.logout') }}</p>
+          </a>
+        </li>
+      </ul>
     </div>
+    <div class="sidebar-background" :style="sidebarStyle"></div>
   </div>
 </template>
 <script>
-import SidebarLink from "./SidebarLink";
-
+//import SidebarLink from "./SidebarLink";
+import axios from 'axios'
 export default {
   components: {
-    SidebarLink
+    //SidebarLink
   },
   props: {
     title: {
       type: String,
-      default: "Vue MD"
+      default: "panel.site_title"
     },
-    sidebarBackgroundImage: {
+    backgroundImage: {
       type: String,
       default: require("@/assets/img/sidebar-2.jpg")
     },
@@ -57,33 +55,50 @@ export default {
       type: String,
       default: require("@/assets/img/vue.png")
     },
-    sidebarItemColor: {
+     backgroundColor: {
       type: String,
-      default: "green",
+      default: 'black',
       validator: value => {
-        let acceptedValues = ["", "purple", "blue", "green", "orange", "red"];
-        return acceptedValues.indexOf(value) !== -1;
+        let acceptedValues = ['', 'white', 'black']
+        return acceptedValues.indexOf(value) !== -1
+      }
+    },
+    itemColor: {
+      type: String,
+      default: 'purple',
+      validator: value => {
+        let acceptedValues = [
+          '',
+          'purple',
+          'azure',
+          'green',
+          'orange',
+          'rose',
+          'danger'
+        ]
+        return acceptedValues.indexOf(value) !== -1
       }
     },
     sidebarLinks: {
       type: Array,
       default: () => []
-    },
-    autoClose: {
-      type: Boolean,
-      default: true
     }
   },
-  provide() {
-    return {
-      autoClose: this.autoClose
-    };
+  data() {
+    return {}
   },
   computed: {
     sidebarStyle() {
       return {
-        backgroundImage: `url(${this.sidebarBackgroundImage})`
-      };
+        backgroundImage: `url(${this.backgroundImage})`
+      }
+    }
+  },
+  methods: {
+    logout() {
+      axios
+        .request({ baseURL: '/', url: 'logout', method: 'post' })
+        .then(() => location.assign('/'))
     }
   }
 };
