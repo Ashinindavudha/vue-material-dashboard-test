@@ -82,7 +82,7 @@ export default {
   },
   data() {
     return {
-      columns: [
+       columns: [
         {
           title: 'ID',
           field: 'id',
@@ -94,16 +94,17 @@ export default {
           title: 'သိက္ခာပုဒ်အမည်',
           field: 'title',
           thComp: TranslatedHeader,
-          sortable: true
+          sortable: true,
+          colStyle: 'width: 150px;'
         },
         {
-          title: 'သိက္ခာပုဒ်ပါဠိ',
-          field: 'definition',
+          title: 'သိက္ခာပုဒ်အဖွင့်',
+          field: 'description',
           thComp: TranslatedHeader,
           sortable: true
         },
         {
-          title: 'ဆက်လက်ကြည့်ရန်',
+          title: 'ကင်္ခါဝိတရဏီ အဋ္ဌကထာ အဖွင့်',
           thComp: TranslatedHeader,
           tdComp: DatatableActions,
           visible: true,
@@ -112,7 +113,7 @@ export default {
           colStyle: 'width: 150px;'
         }
       ],
-      query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+      query: { sort: 'id', order: 'asc', limit: 100, s: '' },
       xprops: {
         module: 'BikkhuParajikasIndex',
         route: 'bikkhu_parajikas',

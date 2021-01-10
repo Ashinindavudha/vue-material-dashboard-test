@@ -84,20 +84,28 @@ export default {
     return {
       columns: [
         {
-          title: 'cruds.apayimaVagga.fields.id',
+          title: 'ID',
           field: 'id',
           thComp: TranslatedHeader,
           sortable: true,
           colStyle: 'width: 100px;'
         },
         {
-          title: 'cruds.apayimaVagga.fields.title',
+          title: 'ဇာတက',
           field: 'title',
           thComp: TranslatedHeader,
-          sortable: true
+          sortable: true,
+          colStyle: 'width: 150px;'
         },
         {
-          title: 'global.actions',
+          title: 'ဂါထာ',
+          field: 'verse',
+          thComp: TranslatedHeader,
+          sortable: true,
+          //colStyle: 'width: 150px;'
+        },
+        {
+          title: 'အဋ္ဌကထာအဖွင့်ကြည့်ရန်',
           thComp: TranslatedHeader,
           tdComp: DatatableActions,
           visible: true,
@@ -106,7 +114,7 @@ export default {
           colStyle: 'width: 150px;'
         }
       ],
-      query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+      query: { sort: 'id', order: 'asc', limit: 100, s: '' },
       xprops: {
         module: 'ApayimaVaggasIndex',
         route: 'apayima_vaggas',

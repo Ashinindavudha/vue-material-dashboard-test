@@ -84,20 +84,20 @@ export default {
     return {
       columns: [
         {
-          title: 'cruds.grammarChapter.fields.id',
+          title: 'ID',
           field: 'id',
           thComp: TranslatedHeader,
           sortable: true,
           colStyle: 'width: 100px;'
         },
         {
-          title: 'cruds.grammarChapter.fields.titel',
+          title: 'သဒ္ဒါကဏ္ဍ',
           field: 'titel',
           thComp: TranslatedHeader,
           sortable: true
         },
         {
-          title: 'global.actions',
+          title: 'Action',
           thComp: TranslatedHeader,
           tdComp: DatatableActions,
           visible: true,
@@ -106,7 +106,7 @@ export default {
           colStyle: 'width: 150px;'
         }
       ],
-      query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+      query: { sort: 'id', order: 'asc', limit: 100, s: '' },
       xprops: {
         module: 'GrammarChaptersIndex',
         route: 'grammar_chapters',

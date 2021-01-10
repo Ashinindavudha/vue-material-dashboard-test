@@ -27,7 +27,8 @@
         <li class="nav-item">
           <a href="#" class="nav-link" @click.prevent="logout">
             <i class="material-icons">power_settings_new</i>
-           <p>{{ $t('global.logout') }}</p>
+           <!-- <p>{{ $t('global.logout') }}</p> -->
+           <p>Logout</p>
           </a>
         </li>
       </ul>
@@ -45,7 +46,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "panel.site_title"
+      default: "Buddhist Educational Web-App"
     },
     backgroundImage: {
       type: String,

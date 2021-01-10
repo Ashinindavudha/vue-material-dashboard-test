@@ -84,20 +84,27 @@ export default {
     return {
       columns: [
         {
-          title: 'cruds.abhidhammaRupaLesson.fields.id',
+          title: 'ID',
           field: 'id',
           thComp: TranslatedHeader,
           sortable: true,
           colStyle: 'width: 100px;'
         },
         {
-          title: 'cruds.abhidhammaRupaLesson.fields.title',
+          title: 'ခေါင်းစဉ်',
           field: 'title',
+          thComp: TranslatedHeader,
+          sortable: true,
+          colStyle: 'width: 150px;'
+        },
+         {
+          title: 'စုဏ္ဏိယပါဠိ',
+          field: 'description',
           thComp: TranslatedHeader,
           sortable: true
         },
         {
-          title: 'global.actions',
+          title: 'ဋီကာ-အဖွင့်',
           thComp: TranslatedHeader,
           tdComp: DatatableActions,
           visible: true,

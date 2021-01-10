@@ -9,7 +9,8 @@
             </div>
             <h4 class="card-title">
               {{ $t('global.table') }}
-              <strong>{{ $t('cruds.abhiddhammaVithiLesson.title') }}</strong>
+              <!-- <strong>{{ $t('') }}</strong> -->
+              <strong>ဝီထိပိုင်း</strong>
             </h4>
           </div>
           <div class="card-body">
@@ -84,20 +85,28 @@ export default {
     return {
       columns: [
         {
-          title: 'cruds.abhiddhammaVithiLesson.fields.id',
+          title: 'ID',
           field: 'id',
           thComp: TranslatedHeader,
           sortable: true,
           colStyle: 'width: 100px;'
         },
         {
-          title: 'cruds.abhiddhammaVithiLesson.fields.title',
+          title: 'ခေါင်းစဉ်',
           field: 'title',
           thComp: TranslatedHeader,
-          sortable: true
+          sortable: true,
+          colStyle: 'width: 150px;'
         },
         {
-          title: 'global.actions',
+          title: 'စုဏ္ဏိယပါဠိ',
+          field: 'description',
+          thComp: TranslatedHeader,
+          sortable: true,
+          //colStyle: 'width: 150px;'
+        },
+        {
+          title: 'ဋီကာ-အဖွင့်',
           thComp: TranslatedHeader,
           tdComp: DatatableActions,
           visible: true,
@@ -106,7 +115,7 @@ export default {
           colStyle: 'width: 150px;'
         }
       ],
-      query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+      query: { sort: 'id', order: 'asc', limit: 100, s: '' },
       xprops: {
         module: 'AbhiddhammaVithiLessonsIndex',
         route: 'abhiddhamma_vithi_lessons',

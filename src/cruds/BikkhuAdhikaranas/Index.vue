@@ -83,20 +83,26 @@ export default {
     return {
       columns: [
         {
-          title: 'cruds.bikkhuAdhikarana.fields.id',
+          title: 'ID',
           field: 'id',
           thComp: TranslatedHeader,
           sortable: true,
           colStyle: 'width: 100px;'
         },
         {
-          title: 'cruds.bikkhuAdhikarana.fields.title',
+          title: 'သိက္ခာပုဒ်အမည်',
           field: 'title',
           thComp: TranslatedHeader,
           sortable: true
         },
         {
-          title: 'global.actions',
+          title: 'သိက္ခာပုဒ်အဖွင့်',
+          field: 'description',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'ကင်္ခါဝိတရဏီ အဋ္ဌကထာ အဖွင့်',
           thComp: TranslatedHeader,
           tdComp: DatatableActions,
           visible: true,
@@ -105,7 +111,7 @@ export default {
           colStyle: 'width: 150px;'
         }
       ],
-      query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+      query: { sort: 'id', order: 'asc', limit: 100, s: '' },
       xprops: {
         module: 'BikkhuAdhikaranasIndex',
         route: 'bikkhu_adhikaranas',

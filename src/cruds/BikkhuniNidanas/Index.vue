@@ -84,20 +84,28 @@ export default {
     return {
       columns: [
         {
-          title: 'cruds.bikkhuniNidana.fields.id',
+          title: 'ID',
           field: 'id',
           thComp: TranslatedHeader,
           sortable: true,
           colStyle: 'width: 100px;'
         },
         {
-          title: 'cruds.bikkhuniNidana.fields.title',
+          title: 'Title',
           field: 'title',
           thComp: TranslatedHeader,
-          sortable: true
+          sortable: true,
+          colStyle: 'width: 150px;'
         },
         {
-          title: 'global.actions',
+          title: 'Description',
+          field: 'description',
+          thComp: TranslatedHeader,
+          sortable: true,
+          //colStyle: 'width: 150px;'
+        },
+        {
+          title: 'ကင်္ခါဝိတရဏီ အဋ္ဌကထာ အဖွင့်',
           thComp: TranslatedHeader,
           tdComp: DatatableActions,
           visible: true,
@@ -106,7 +114,7 @@ export default {
           colStyle: 'width: 150px;'
         }
       ],
-      query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+      query: { sort: 'id', order: 'asc', limit: 100, s: '' },
       xprops: {
         module: 'BikkhuniNidanasIndex',
         route: 'bikkhuni_nidanas',

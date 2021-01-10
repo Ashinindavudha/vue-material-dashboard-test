@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import DatatableActions from "../../components/Datatables/DatatableActions";
 import TranslatedHeader from "../../components/Datatables/TranslatedHeader";
 import HeaderSettings from "../../components/Datatables/HeaderSettings";
@@ -83,20 +84,27 @@ export default {
     return {
       columns: [
         {
-          title: 'cruds.bhikkhuVagga.fields.id',
+          title: 'ID',
           field: 'id',
           thComp: TranslatedHeader,
           sortable: true,
           colStyle: 'width: 100px;'
         },
         {
-          title: 'cruds.bhikkhuVagga.fields.title',
+          title: 'ဓမ္မပဒ-ဝတ္ထု',
           field: 'title',
+          thComp: TranslatedHeader,
+          sortable: true,
+          colStyle: 'width: 150px;'
+        },
+         {
+          title: 'ဂါထာ',
+          field: 'description',
           thComp: TranslatedHeader,
           sortable: true
         },
         {
-          title: 'global.actions',
+          title: 'ဓမ္မပဒအဋ္ဌကထာအဖွင့်',
           thComp: TranslatedHeader,
           tdComp: DatatableActions,
           visible: true,
@@ -105,7 +113,7 @@ export default {
           colStyle: 'width: 150px;'
         }
       ],
-      query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+      query: { sort: 'id', order: 'asc', limit: 100, s: '' },
       xprops: {
         module: 'BhikkhuVaggasIndex',
         route: 'bhikkhu_vaggas',

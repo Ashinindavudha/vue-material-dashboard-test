@@ -103,7 +103,7 @@ export default {
           sortable: true,
         },
         {
-          title: "actions",
+          title: "ကင်္ခါဝိတရဏီ အဋ္ဌကထာ အဖွင့်",
           thComp: TranslatedHeader,
           tdComp: DatatableActions,
           visible: true,
@@ -112,14 +112,16 @@ export default {
           colStyle: "width: 150px;",
         },
       ],
-      query: { sort: "id", order: "desc", limit: 100, s: "" },
+      query: { sort: "id", order: "asc", limit: 100, s: "" },
       xprops: {
         module: "BikkhuNidanasIndex",
         route: "bikkhu-nidanas",
         permission_prefix: "bikkhu_nidana_",
       },
     };
+    
   },
+  
   beforeDestroy() {
     this.resetState();
   },
